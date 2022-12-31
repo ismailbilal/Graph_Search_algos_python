@@ -481,7 +481,7 @@ color: rgb(255, 255, 255)</string>
                     <number>0</number>
                    </property>
                    <item>
-                    <widget class="QPushButton" name="arbre">
+                    <widget class="QPushButton" name="arbre_btn">
                      <property name="minimumSize">
                       <size>
                        <width>0</width>
@@ -500,7 +500,7 @@ color: rgb(255, 255, 255)</string>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QPushButton" name="graph">
+                    <widget class="QPushButton" name="graph_btn">
                      <property name="styleSheet">
                       <string notr="true"/>
                      </property>
@@ -678,7 +678,7 @@ color: rgb(255, 255, 255)</string>
   <customwidget>
    <class>InitFig</class>
    <extends>QWidget</extends>
-   <header>initfig.h</header>
+   <header>interface.initfig.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
