@@ -15,24 +15,42 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1422, 772)
-        MainWindow.setStyleSheet("")
+        MainWindow.setStyleSheet("background-color: #fff;")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("")
         self.centralwidget.setObjectName("centralwidget")
-        self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.centralwidget)
-        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
+        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setSpacing(0)
+        self.gridLayout.setObjectName("gridLayout")
         self.main = QtWidgets.QFrame(self.centralwidget)
         self.main.setMinimumSize(QtCore.QSize(1200, 700))
         self.main.setToolTipDuration(-1)
-        self.main.setStyleSheet("border: 0px solid rgb(255, 255, 255);\n"
-"background-color: rgb(73, 67, 138);\n"
-"color: rgb(255, 255, 255)")
+        self.main.setStyleSheet("QFrame{\n"
+"    border: 0px solid;\n"
+"    background-color: #fff;\n"
+"\n"
+"}\n"
+"QPushButton{\n"
+"    border: 1px solid rgb(18, 104, 255);\n"
+"    border-top-left-radius: 10px;\n"
+"    border-bottom-left-radius: 10px;\n"
+"    border-top-right-radius: 10px;\n"
+"    border-bottom-right-radius: 10px;\n"
+"    padding: 0.5em;\n"
+"    background-color: #fff;\n"
+"    color: #000;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(18, 104, 255);\n"
+"    color: #fff;\n"
+"    font-weight: bold;\n"
+"}")
         self.main.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.main.setFrameShadow(QtWidgets.QFrame.Raised)
         self.main.setObjectName("main")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.main)
         self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_5.setSpacing(0)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.header = QtWidgets.QFrame(self.main)
         self.header.setMinimumSize(QtCore.QSize(0, 70))
@@ -42,7 +60,9 @@ class Ui_MainWindow(object):
         self.header.setObjectName("header")
         self.verticalLayout_5.addWidget(self.header)
         self.mainbody = QtWidgets.QFrame(self.main)
-        self.mainbody.setStyleSheet("background-color: rgb(116, 112, 178)")
+        self.mainbody.setStyleSheet("QFrame{\n"
+"color: #000\n"
+"}")
         self.mainbody.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.mainbody.setFrameShadow(QtWidgets.QFrame.Raised)
         self.mainbody.setObjectName("mainbody")
@@ -50,10 +70,26 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.algos = QtWidgets.QFrame(self.mainbody)
-        self.algos.setMaximumSize(QtCore.QSize(150, 16777215))
-        self.algos.setStyleSheet("background-color: rgb(95, 94, 163)")
+        self.algos.setMinimumSize(QtCore.QSize(165, 0))
+        self.algos.setMaximumSize(QtCore.QSize(165, 16777215))
+        self.algos.setStyleSheet("QFrame{\n"
+"background-color: rgb(226, 225, 232);\n"
+"}\n"
+"QPushButton{\n"
+"background-color: rgba(0,0,0,0%);\n"
+"border-radius:0px;\n"
+"border:none;\n"
+"border-right: 4px solid rgb(24, 112, 255);\n"
+"color: rgba(0, 0, 0, 60%);\n"
+"padding: 1.1em 0em;\n"
+"font-size: 14px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: #fff;\n"
+"}")
         self.algos.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.algos.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.algos.setLineWidth(1)
         self.algos.setObjectName("algos")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.algos)
         self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
@@ -65,6 +101,8 @@ class Ui_MainWindow(object):
         self.algos_graph.setFrameShadow(QtWidgets.QFrame.Raised)
         self.algos_graph.setObjectName("algos_graph")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.algos_graph)
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.bellmanford = QtWidgets.QPushButton(self.algos_graph)
         self.bellmanford.setMinimumSize(QtCore.QSize(0, 30))
@@ -98,35 +136,37 @@ class Ui_MainWindow(object):
         self.dfs.setMinimumSize(QtCore.QSize(0, 30))
         self.dfs.setObjectName("dfs")
         self.verticalLayout_2.addWidget(self.dfs)
-        self.verticalLayout_6.addWidget(self.algos_graph)
+        self.verticalLayout_6.addWidget(self.algos_graph, 0, QtCore.Qt.AlignTop)
         self.algos_arbre = QtWidgets.QFrame(self.algos)
         self.algos_arbre.setStyleSheet("")
         self.algos_arbre.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.algos_arbre.setFrameShadow(QtWidgets.QFrame.Raised)
         self.algos_arbre.setObjectName("algos_arbre")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.algos_arbre)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.algos_arbre)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setSpacing(0)
+        self.verticalLayout.setObjectName("verticalLayout")
         self.prefixe = QtWidgets.QPushButton(self.algos_arbre)
         self.prefixe.setMinimumSize(QtCore.QSize(0, 30))
         self.prefixe.setObjectName("prefixe")
-        self.verticalLayout_3.addWidget(self.prefixe)
+        self.verticalLayout.addWidget(self.prefixe)
         self.infixe = QtWidgets.QPushButton(self.algos_arbre)
         self.infixe.setMinimumSize(QtCore.QSize(0, 30))
         self.infixe.setObjectName("infixe")
-        self.verticalLayout_3.addWidget(self.infixe)
+        self.verticalLayout.addWidget(self.infixe)
         self.postfixe = QtWidgets.QPushButton(self.algos_arbre)
         self.postfixe.setMinimumSize(QtCore.QSize(0, 30))
         self.postfixe.setObjectName("postfixe")
-        self.verticalLayout_3.addWidget(self.postfixe)
+        self.verticalLayout.addWidget(self.postfixe)
         self.largeur = QtWidgets.QPushButton(self.algos_arbre)
         self.largeur.setMinimumSize(QtCore.QSize(0, 30))
         self.largeur.setObjectName("largeur")
-        self.verticalLayout_3.addWidget(self.largeur)
+        self.verticalLayout.addWidget(self.largeur)
         self.profondeur = QtWidgets.QPushButton(self.algos_arbre)
         self.profondeur.setMinimumSize(QtCore.QSize(0, 30))
         self.profondeur.setObjectName("profondeur")
-        self.verticalLayout_3.addWidget(self.profondeur)
-        self.verticalLayout_6.addWidget(self.algos_arbre)
+        self.verticalLayout.addWidget(self.profondeur)
+        self.verticalLayout_6.addWidget(self.algos_arbre, 0, QtCore.Qt.AlignTop)
         self.horizontalLayout.addWidget(self.algos)
         self.show = QtWidgets.QFrame(self.mainbody)
         self.show.setStyleSheet("")
@@ -139,12 +179,28 @@ class Ui_MainWindow(object):
         self.generate = QtWidgets.QFrame(self.show)
         self.generate.setMinimumSize(QtCore.QSize(0, 80))
         self.generate.setMaximumSize(QtCore.QSize(16777215, 80))
+        self.generate.setStyleSheet("")
         self.generate.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.generate.setFrameShadow(QtWidgets.QFrame.Raised)
         self.generate.setObjectName("generate")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.generate)
-        self.horizontalLayout_4.setSpacing(300)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.frame_algo_name = QtWidgets.QFrame(self.generate)
+        self.frame_algo_name.setMaximumSize(QtCore.QSize(400, 16777215))
+        self.frame_algo_name.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_algo_name.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_algo_name.setObjectName("frame_algo_name")
+        self.horizontalLayout_8 = QtWidgets.QHBoxLayout(self.frame_algo_name)
+        self.horizontalLayout_8.setContentsMargins(0, 4, 0, 4)
+        self.horizontalLayout_8.setSpacing(0)
+        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
+        self.textEdit = QtWidgets.QTextEdit(self.frame_algo_name)
+        self.textEdit.setObjectName("textEdit")
+        self.horizontalLayout_8.addWidget(self.textEdit)
+        self.algorithm_name = QtWidgets.QTextEdit(self.frame_algo_name)
+        self.algorithm_name.setObjectName("algorithm_name")
+        self.horizontalLayout_8.addWidget(self.algorithm_name)
+        self.horizontalLayout_4.addWidget(self.frame_algo_name)
         self.type = QtWidgets.QFrame(self.generate)
         self.type.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.type.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -152,24 +208,24 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.type)
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.frame = QtWidgets.QFrame(self.type)
-        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame.setObjectName("frame")
-        self.horizontalLayout_6 = QtWidgets.QHBoxLayout(self.frame)
+        self.generate_frame = QtWidgets.QFrame(self.type)
+        self.generate_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.generate_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.generate_frame.setObjectName("generate_frame")
+        self.horizontalLayout_6 = QtWidgets.QHBoxLayout(self.generate_frame)
         self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
-        self.nbnode_label = QtWidgets.QLabel(self.frame)
+        self.nbnode_label = QtWidgets.QLabel(self.generate_frame)
         self.nbnode_label.setToolTip("")
         self.nbnode_label.setObjectName("nbnode_label")
         self.horizontalLayout_6.addWidget(self.nbnode_label, 0, QtCore.Qt.AlignLeft)
-        self.nb_nodes = QtWidgets.QSpinBox(self.frame)
+        self.nb_nodes = QtWidgets.QSpinBox(self.generate_frame)
         self.nb_nodes.setObjectName("nb_nodes")
         self.horizontalLayout_6.addWidget(self.nb_nodes, 0, QtCore.Qt.AlignLeft)
-        self.generate_btn = QtWidgets.QPushButton(self.frame)
+        self.generate_btn = QtWidgets.QPushButton(self.generate_frame)
         self.generate_btn.setObjectName("generate_btn")
         self.horizontalLayout_6.addWidget(self.generate_btn)
-        self.horizontalLayout_3.addWidget(self.frame)
+        self.horizontalLayout_3.addWidget(self.generate_frame)
         self.horizontalLayout_4.addWidget(self.type)
         self.frame_2 = QtWidgets.QFrame(self.generate)
         self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -192,7 +248,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.addWidget(self.frame_2)
         self.verticalLayout_4.addWidget(self.generate)
         self.drawing = QtWidgets.QFrame(self.show)
-        self.drawing.setStyleSheet("background-color: rgb(160, 156, 204);")
+        self.drawing.setStyleSheet("")
         self.drawing.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.drawing.setFrameShadow(QtWidgets.QFrame.Raised)
         self.drawing.setObjectName("drawing")
@@ -239,7 +295,7 @@ class Ui_MainWindow(object):
         self.footer.setFrameShadow(QtWidgets.QFrame.Raised)
         self.footer.setObjectName("footer")
         self.verticalLayout_5.addWidget(self.footer)
-        self.horizontalLayout_7.addWidget(self.main)
+        self.gridLayout.addWidget(self.main, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -261,10 +317,15 @@ class Ui_MainWindow(object):
         self.postfixe.setText(_translate("MainWindow", "postfixe n-air"))
         self.largeur.setText(_translate("MainWindow", "largeur n-air"))
         self.profondeur.setText(_translate("MainWindow", "profondeur n-air"))
+        self.textEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:24pt;\">currant algorithm: </span></p></body></html>"))
         self.nbnode_label.setText(_translate("MainWindow", "nodes number"))
         self.generate_btn.setText(_translate("MainWindow", "Generate"))
         self.arbre_btn.setText(_translate("MainWindow", "Tree"))
-        self.graph_btn.setText(_translate("MainWindow", "Graoph"))
+        self.graph_btn.setText(_translate("MainWindow", "Graph"))
         self.apply.setText(_translate("MainWindow", "Apply"))
         self.start_label.setText(_translate("MainWindow", "Start"))
         self.but_label.setText(_translate("MainWindow", "But"))
