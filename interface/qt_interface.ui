@@ -687,7 +687,7 @@ p, li { white-space: pre-wrap; }
                  </widget>
                 </item>
                 <item>
-                 <widget class="QWidget" name="result_widget" native="true">
+                 <widget class="ResultFig" name="ResultFig" native="true">
                   <property name="maximumSize">
                    <size>
                     <width>550</width>
@@ -816,6 +816,12 @@ p, li { white-space: pre-wrap; }
    <class>InitFig</class>
    <extends>QWidget</extends>
    <header>interface.initfig.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ResultFig</class>
+   <extends>QWidget</extends>
+   <header>interface.resultfig.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

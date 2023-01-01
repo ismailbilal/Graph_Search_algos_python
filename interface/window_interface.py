@@ -259,10 +259,10 @@ class Ui_MainWindow(object):
         self.InitFig.setMaximumSize(QtCore.QSize(550, 400))
         self.InitFig.setObjectName("InitFig")
         self.horizontalLayout_2.addWidget(self.InitFig)
-        self.result_widget = QtWidgets.QWidget(self.drawing)
-        self.result_widget.setMaximumSize(QtCore.QSize(550, 400))
-        self.result_widget.setObjectName("result_widget")
-        self.horizontalLayout_2.addWidget(self.result_widget)
+        self.ResultFig = ResultFig(self.drawing)
+        self.ResultFig.setMaximumSize(QtCore.QSize(550, 400))
+        self.ResultFig.setObjectName("ResultFig")
+        self.horizontalLayout_2.addWidget(self.ResultFig)
         self.verticalLayout_4.addWidget(self.drawing)
         self.applay = QtWidgets.QFrame(self.show)
         self.applay.setMaximumSize(QtCore.QSize(16777215, 80))
@@ -330,6 +330,7 @@ class Ui_MainWindow(object):
         self.start_label.setText(_translate("MainWindow", "Start"))
         self.but_label.setText(_translate("MainWindow", "But"))
 from interface.initfig import InitFig
+from interface.resultfig import ResultFig
 
 
 if __name__ == "__main__":
