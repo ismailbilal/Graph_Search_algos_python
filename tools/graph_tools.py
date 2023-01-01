@@ -13,27 +13,27 @@ def generate_matrix(nb_nodes=10):
     return random_graph
 
 
-def draw_graph(G, start_node=None, goal_node=None, figure_nb=1, path_edges=[], axis="off"):
+def draw_graph(graph, start_node=None, goal_node=None, path_edges=[], axis="off"):
     node_size = 200
     font_size = 7
-    edge_labels = nx.get_edge_attributes(G, "weight")
+    edge_labels = nx.get_edge_attributes(graph, "weight")
 
     # position of all nodes
-    pos = nx.spring_layout(G, seed=0)
+    pos = nx.spring_layout(graph, seed=0)
     # draw all nodes
-    nx.draw_networkx_nodes(G, pos, node_color="tab:blue", node_size=node_size, ax=axis)
+    nx.draw_networkx_nodes(graph, pos, node_color="tab:blue", node_size=node_size, ax=axis)
     # draw starting node with the color green
     if start_node:
-        nx.draw_networkx_nodes(G, pos, nodelist=[start_node], node_color="tab:green", node_size=node_size, ax=axis)
+        nx.draw_networkx_nodes(graph, pos, nodelist=[start_node], node_color="tab:green", node_size=node_size, ax=axis)
     # draw goal_node with the color red
     if goal_node:
-        nx.draw_networkx_nodes(G, pos, nodelist=[goal_node], node_color="tab:red", node_size=node_size, ax=axis)
+        nx.draw_networkx_nodes(graph, pos, nodelist=[goal_node], node_color="tab:red", node_size=node_size, ax=axis)
     # draw all edges
-    nx.draw_networkx_edges(G, pos, width=1, ax=axis)
+    nx.draw_networkx_edges(graph, pos, width=1, ax=axis)
     if path_edges:
         nx.draw_networkx_edges(
-            G, pos, edgelist=path_edges, width=3, alpha=0.5, edge_color="red", style="solid", ax=axis
+            graph, pos, edgelist=path_edges, width=3, alpha=0.5, edge_color="red", style="solid", ax=axis
         )
     # draw edges attributes
-    nx.draw_networkx_edge_labels(G, pos, edge_labels, font_size=font_size, ax=axis)
-    nx.draw_networkx_labels(G, pos, font_size=font_size, font_family="sans-serif", font_color="white", ax=axis)
+    nx.draw_networkx_edge_labels(graph, pos, edge_labels, font_size=font_size, ax=axis)
+    nx.draw_networkx_labels(graph, pos, font_size=font_size, font_family="sans-serif", font_color="white", ax=axis)
