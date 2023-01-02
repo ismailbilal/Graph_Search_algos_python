@@ -11,6 +11,8 @@ def show_graph_algos(boolean_variable, ui):
         ui.algos_arbre.hide()
         ui.algos_graph.show()
         clear_figures(ui)
+        ui.nb_nodes.setValue(10)
+        select_algo(False, ui, ui.bellmanford)
         ui.isTree = False
 
 
@@ -19,6 +21,8 @@ def show_arbre_algos(boolean_variable, ui):
         ui.algos_graph.hide()
         ui.algos_arbre.show()
         clear_figures(ui)
+        ui.nb_nodes.setValue(16)
+        select_algo(False, ui, ui.prefixe)
         ui.isTree = True
 
 
@@ -64,5 +68,39 @@ def draw_new_tree(boolean_variable, ui):
     nx.draw(tree, pos=pos, with_labels=True, ax=ui.ResultFig.canvas.axes)
     ui.ResultFig.canvas.draw()
 
-# def select_algo(boolean_variable, ui, algo_btn):
-#     algo_btn.setStyleSheet(selected_algo_btn_style)
+
+def reset_algo_btns_style(ui):
+    style = """
+        QPushButton {
+            border-right: 4px solid rgb(24, 112, 255);
+            background-color: rgba(0,0,0,0%);
+        }
+        QPushButton:hover {
+            background-color: #fff;
+    """
+    ui.infixe.setStyleSheet(style)
+    ui.largeur.setStyleSheet(style)
+    ui.postfixe.setStyleSheet(style)
+    ui.prefixe.setStyleSheet(style)
+    ui.profondeur.setStyleSheet(style)
+    ui.astar.setStyleSheet(style)
+    ui.bellmanford.setStyleSheet(style)
+    ui.belmanfordmoore.setStyleSheet(style)
+    ui.bfs.setStyleSheet(style)
+    ui.dfs.setStyleSheet(style)
+    ui.floydwarchal.setStyleSheet(style)
+    ui.fordfulkerson.setStyleSheet(style)
+    ui.kraskal.setStyleSheet(style)
+
+
+def select_algo(boolean_variable, ui, algo_btn):
+    ui.algorithm_name.setText(algo_btn.text())
+    ui.algorithm_name.setStyleSheet("font-size:24px; color:rgb(18, 104, 255)")
+    ui.algorithm_name.setEnabled(False)
+    reset_algo_btns_style(ui)
+    algo_btn.setStyleSheet('QPushButton#' + algo_btn.objectName() + """ {
+            background-color: #fff;
+            border: 3px solid rgba(0, 0, 0, 0);
+            color: #000;
+            font-weight: bold;
+    }""")

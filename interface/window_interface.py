@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1422, 772)
+        MainWindow.resize(1200, 700)
         MainWindow.setStyleSheet("background-color: #fff;")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("")
@@ -182,24 +182,30 @@ class Ui_MainWindow(object):
         self.generate.setFrameShadow(QtWidgets.QFrame.Raised)
         self.generate.setObjectName("generate")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.generate)
+        self.horizontalLayout_4.setContentsMargins(0, 0, 20, 0)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.frame_algo_name = QtWidgets.QFrame(self.generate)
-        self.frame_algo_name.setMaximumSize(QtCore.QSize(400, 16777215))
+        self.frame_algo_name.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.frame_algo_name.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_algo_name.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_algo_name.setObjectName("frame_algo_name")
         self.horizontalLayout_8 = QtWidgets.QHBoxLayout(self.frame_algo_name)
-        self.horizontalLayout_8.setContentsMargins(0, 4, 0, 4)
+        self.horizontalLayout_8.setContentsMargins(0, 17, 0, 16)
         self.horizontalLayout_8.setSpacing(0)
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
         self.textEdit = QtWidgets.QTextEdit(self.frame_algo_name)
+        self.textEdit.setMinimumSize(QtCore.QSize(200, 0))
+        self.textEdit.setMaximumSize(QtCore.QSize(200, 16777215))
         self.textEdit.setObjectName("textEdit")
         self.horizontalLayout_8.addWidget(self.textEdit)
         self.algorithm_name = QtWidgets.QTextEdit(self.frame_algo_name)
+        self.algorithm_name.setMinimumSize(QtCore.QSize(230, 0))
         self.algorithm_name.setObjectName("algorithm_name")
         self.horizontalLayout_8.addWidget(self.algorithm_name)
         self.horizontalLayout_4.addWidget(self.frame_algo_name)
         self.frame_2 = QtWidgets.QFrame(self.generate)
+        self.frame_2.setMinimumSize(QtCore.QSize(550, 0))
+        self.frame_2.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_2.setObjectName("frame_2")
@@ -322,6 +328,11 @@ class Ui_MainWindow(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:24pt;\">currant algorithm: </span></p></body></html>"))
+        self.algorithm_name.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.arbre_btn.setText(_translate("MainWindow", "Tree"))
         self.graph_btn.setText(_translate("MainWindow", "Graph"))
         self.label.setText(_translate("MainWindow", "nodes number:"))
