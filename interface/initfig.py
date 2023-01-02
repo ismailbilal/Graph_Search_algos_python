@@ -16,7 +16,7 @@ class InitFig(QWidget):
         vertical_layout.addWidget(self.canvas)
 
         self.canvas.axes = self.canvas.figure.add_subplot(111)
-        # self.canvas.axes.margins(0.08)
-        # self.canvas.axes.axis("off")
-        # self.canvas.axes._in_layout()
+        self.canvas.figure.tight_layout()
+        self.canvas.axes.set_title("Initial Network")
+        self.canvas.axes.axis("off")
         self.setLayout(vertical_layout)
