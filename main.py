@@ -15,16 +15,16 @@ if __name__ == '__main__':
     ui.algos_arbre.hide()
     ui.nb_nodes.setValue(12)
     ui.algorithm_name.setText('Bellman-Ford')
-    shadow = QGraphicsDropShadowEffect()
-    shadow.setBlurRadius(100)
-    shadow.setColor(QColor("gray"))
-    ui.header.setGraphicsEffect(shadow)
+    ui.algorithm_name.setStyleSheet("font-size:24px; color:rgb(18, 104, 255)")
     ui.isTree = False
+    ui.InitFig.setStyleSheet("")
 
     # button handlers
     ui.graph_btn.clicked.connect(lambda bol: interface_tools.show_graph_algos(bol, ui))
     ui.arbre_btn.clicked.connect(lambda bol: interface_tools.show_arbre_algos(bol, ui))
     ui.generate_btn.clicked.connect(lambda bol: interface_tools.draw_new_tree(bol, ui) if ui.isTree else interface_tools.draw_new_graph(bol, ui))
+
+    # algos btns handlers
 
     MainWindow.show()
     sys.exit(app.exec_())

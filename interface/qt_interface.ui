@@ -67,6 +67,10 @@ QPushButton:hover {
 	background-color: rgb(18, 104, 255);
 	color: #fff;
 	font-weight: bold;
+}
+QPushButton:pressed{
+	background-color:rgba(19, 106, 255, 30%);
+	border-style: inset;
 }</string>
       </property>
       <property name="frameShape">
@@ -91,28 +95,6 @@ QPushButton:hover {
        <property name="bottomMargin">
         <number>0</number>
        </property>
-       <item>
-        <widget class="QFrame" name="header">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>70</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>60</height>
-          </size>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-        </widget>
-       </item>
        <item>
         <widget class="QFrame" name="mainbody">
          <property name="styleSheet">
@@ -439,17 +421,20 @@ background-color: #fff;
              <enum>QFrame::Raised</enum>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_4">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <property name="leftMargin">
               <number>0</number>
              </property>
              <property name="topMargin">
-              <number>0</number>
+              <number>20</number>
              </property>
              <property name="rightMargin">
               <number>0</number>
              </property>
              <property name="bottomMargin">
-              <number>0</number>
+              <number>20</number>
              </property>
              <item>
               <widget class="QFrame" name="generate">
@@ -521,74 +506,6 @@ p, li { white-space: pre-wrap; }
                    </item>
                    <item>
                     <widget class="QTextEdit" name="algorithm_name"/>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QFrame" name="type">
-                  <property name="frameShape">
-                   <enum>QFrame::StyledPanel</enum>
-                  </property>
-                  <property name="frameShadow">
-                   <enum>QFrame::Raised</enum>
-                  </property>
-                  <layout class="QHBoxLayout" name="horizontalLayout_3">
-                   <property name="leftMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="topMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="rightMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="bottomMargin">
-                    <number>0</number>
-                   </property>
-                   <item>
-                    <widget class="QFrame" name="generate_frame">
-                     <property name="frameShape">
-                      <enum>QFrame::StyledPanel</enum>
-                     </property>
-                     <property name="frameShadow">
-                      <enum>QFrame::Raised</enum>
-                     </property>
-                     <layout class="QHBoxLayout" name="horizontalLayout_6">
-                      <property name="leftMargin">
-                       <number>0</number>
-                      </property>
-                      <property name="topMargin">
-                       <number>0</number>
-                      </property>
-                      <property name="rightMargin">
-                       <number>0</number>
-                      </property>
-                      <property name="bottomMargin">
-                       <number>0</number>
-                      </property>
-                      <item alignment="Qt::AlignLeft">
-                       <widget class="QLabel" name="nbnode_label">
-                        <property name="toolTip">
-                         <string/>
-                        </property>
-                        <property name="text">
-                         <string>nodes number</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item alignment="Qt::AlignLeft">
-                       <widget class="QSpinBox" name="nb_nodes"/>
-                      </item>
-                      <item>
-                       <widget class="QPushButton" name="generate_btn">
-                        <property name="text">
-                         <string>Generate</string>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
-                    </widget>
                    </item>
                   </layout>
                  </widget>
@@ -680,9 +597,12 @@ p, li { white-space: pre-wrap; }
                  <widget class="InitFig" name="InitFig" native="true">
                   <property name="maximumSize">
                    <size>
-                    <width>550</width>
-                    <height>400</height>
+                    <width>100000</width>
+                    <height>100000</height>
                    </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">border:1px solid</string>
                   </property>
                  </widget>
                 </item>
@@ -690,9 +610,12 @@ p, li { white-space: pre-wrap; }
                  <widget class="ResultFig" name="ResultFig" native="true">
                   <property name="maximumSize">
                    <size>
-                    <width>550</width>
-                    <height>400</height>
+                    <width>1000000</width>
+                    <height>1000000</height>
                    </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">border: 1px solid</string>
                   </property>
                  </widget>
                 </item>
@@ -713,96 +636,136 @@ p, li { white-space: pre-wrap; }
                <property name="frameShadow">
                 <enum>QFrame::Raised</enum>
                </property>
-               <widget class="QPushButton" name="apply">
-                <property name="geometry">
-                 <rect>
-                  <x>330</x>
-                  <y>20</y>
-                  <width>186</width>
-                  <height>31</height>
-                 </rect>
+               <layout class="QHBoxLayout" name="horizontalLayout_7">
+                <property name="topMargin">
+                 <number>0</number>
                 </property>
-                <property name="text">
-                 <string>Apply</string>
+                <property name="bottomMargin">
+                 <number>0</number>
                 </property>
-               </widget>
-               <widget class="QSpinBox" name="but_node">
-                <property name="geometry">
-                 <rect>
-                  <x>100</x>
-                  <y>40</y>
-                  <width>42</width>
-                  <height>22</height>
-                 </rect>
-                </property>
-               </widget>
-               <widget class="QSpinBox" name="start_node">
-                <property name="geometry">
-                 <rect>
-                  <x>100</x>
-                  <y>10</y>
-                  <width>42</width>
-                  <height>22</height>
-                 </rect>
-                </property>
-               </widget>
-               <widget class="QLabel" name="start_label">
-                <property name="geometry">
-                 <rect>
-                  <x>50</x>
-                  <y>10</y>
-                  <width>47</width>
-                  <height>21</height>
-                 </rect>
-                </property>
-                <property name="toolTip">
-                 <string/>
-                </property>
-                <property name="text">
-                 <string>Start</string>
-                </property>
-               </widget>
-               <widget class="QLabel" name="but_label">
-                <property name="geometry">
-                 <rect>
-                  <x>50</x>
-                  <y>40</y>
-                  <width>47</width>
-                  <height>21</height>
-                 </rect>
-                </property>
-                <property name="text">
-                 <string>But</string>
-                </property>
-               </widget>
+                <item>
+                 <widget class="QFrame" name="generate_frame">
+                  <property name="maximumSize">
+                   <size>
+                    <width>500</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_6">
+                   <item>
+                    <widget class="QLabel" name="label">
+                     <property name="maximumSize">
+                      <size>
+                       <width>100</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>nodes number:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QSpinBox" name="nb_nodes">
+                     <property name="maximumSize">
+                      <size>
+                       <width>100</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="generate_btn">
+                     <property name="text">
+                      <string>Generate</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frame">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_9">
+                   <item>
+                    <widget class="QLabel" name="start_label">
+                     <property name="maximumSize">
+                      <size>
+                       <width>100</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string/>
+                     </property>
+                     <property name="text">
+                      <string>Start:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QSpinBox" name="start_node">
+                     <property name="maximumSize">
+                      <size>
+                       <width>75</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="but_label">
+                     <property name="maximumSize">
+                      <size>
+                       <width>100</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>But:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QSpinBox" name="but_node">
+                     <property name="maximumSize">
+                      <size>
+                       <width>75</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="apply">
+                     <property name="text">
+                      <string>Apply</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </item>
             </layout>
            </widget>
           </item>
          </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QFrame" name="footer">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
         </widget>
        </item>
       </layout>
