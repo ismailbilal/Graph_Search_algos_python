@@ -13,13 +13,14 @@ def generate_matrix(nb_nodes=10):
     return random_graph
 
 
-def draw_graph(graph, start_node=None, goal_node=None, path_edges=[], axis="off"):
-    node_size = 200
-    font_size = 7
+def draw_network(graph, start_node=None, goal_node=None, path_edges=[], axis="off", pos=None):
+    node_size = 200 + 2000 / graph.number_of_nodes() # 200
+    font_size = 7 + 16 / graph.number_of_nodes()   # 7
     edge_labels = nx.get_edge_attributes(graph, "weight")
 
     # position of all nodes
-    pos = nx.spring_layout(graph, seed=0)
+    if not pos:
+        pos = nx.spring_layout(graph, seed=0)
     # draw all nodes
     nx.draw_networkx_nodes(graph, pos, node_color="tab:blue", node_size=node_size, ax=axis)
     # draw starting node with the color green

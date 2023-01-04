@@ -36,7 +36,7 @@ if __name__ == '__main__':
     ui.fordfulkerson.clicked.connect(lambda bol: interface_tools.select_algo(bol, ui, ui.fordfulkerson))
     ui.kraskal.clicked.connect(lambda bol: interface_tools.select_algo(bol, ui, ui.kraskal))
 
-    # algos btns handlers
+    ui.apply_btn.clicked.connect(lambda bol: interface_tools.show_result(bol, ui))
 
     MainWindow.show()
     sys.exit(app.exec_())

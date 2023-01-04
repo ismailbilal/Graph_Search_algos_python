@@ -1,6 +1,7 @@
 import networkx as nx
-from tools.graph_tools import generate_matrix, draw_graph
+from tools.graph_tools import generate_matrix, draw_network
 from tools.tree_tools import generate_tree, hierarchy_pos
+from algorithms.algorithms import algorithms
 
 
 # selected_algo_btn_style = "border: none; font-weight: bold; background-color: #fff"
@@ -24,6 +25,7 @@ def show_arbre_algos(boolean_variable, ui):
         ui.nb_nodes.setValue(16)
         select_algo(False, ui, ui.prefixe)
         ui.isTree = True
+        ui.start_node.setValue(0)
 
 
 def set_figures_style(ui):
@@ -50,22 +52,23 @@ def draw_new_graph(boolean_variable, ui):
     ui.ResultFig.canvas.axes.clear()
     set_figures_style(ui)
 
-    draw_graph(graph, axis=ui.InitFig.canvas.axes)
+    draw_network(graph, axis=ui.InitFig.canvas.axes)
     ui.InitFig.canvas.draw()
 
-    draw_graph(graph, axis=ui.ResultFig.canvas.axes)
+    draw_network(graph, axis=ui.ResultFig.canvas.axes)
     ui.ResultFig.canvas.draw()
 
 
 def draw_new_tree(boolean_variable, ui):
     tree = generate_tree(ui.nb_nodes.value())
+    ui.tree = tree
     pos = hierarchy_pos(tree, 0)
     ui.InitFig.canvas.axes.clear()
     ui.ResultFig.canvas.axes.clear()
     set_figures_style(ui)
-    nx.draw(tree, pos=pos, with_labels=True, ax=ui.InitFig.canvas.axes)
+    draw_network(tree, pos=pos, axis=ui.InitFig.canvas.axes)
     ui.InitFig.canvas.draw()
-    nx.draw(tree, pos=pos, with_labels=True, ax=ui.ResultFig.canvas.axes)
+    draw_network(tree, pos=pos, axis=ui.ResultFig.canvas.axes)
     ui.ResultFig.canvas.draw()
 
 
@@ -104,3 +107,18 @@ def select_algo(boolean_variable, ui, algo_btn):
             color: #000;
             font-weight: bold;
     }""")
+    ui.current_algorithm = algo_btn.objectName()
+
+
+def show_result(boolean_variable, ui):
+    algo = ui.current_algorithm
+    tree_as_dict = nx.to_dict_of_lists(ui.tree)
+    if ui.isTree:
+        path = algorithms[algo]["algo_func"](tree_as_dict, ui.start_node.value())
+        edges = [(path[i], path[i+1]) for i in range(len(path)-1)]
+        DG = nx.DiGraph()
+        DG.add_edges_from(edges)
+        ui.ResultFig.canvas.axes.clear()
+        set_figures_style(ui)
+        draw_network(DG, axis=ui.ResultFig.canvas.axes, path_edges=edges)
+        ui.ResultFig.canvas.draw()
