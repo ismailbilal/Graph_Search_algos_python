@@ -800,7 +800,7 @@ p, li { white-space: pre-wrap; }
                     </widget>
                    </item>
                    <item>
-                    <widget class="QPushButton" name="apply">
+                    <widget class="QPushButton" name="apply_btn">
                      <property name="text">
                       <string>Apply</string>
                      </property>

@@ -294,9 +294,9 @@ class Ui_MainWindow(object):
         self.but_node.setMaximumSize(QtCore.QSize(75, 16777215))
         self.but_node.setObjectName("but_node")
         self.horizontalLayout_9.addWidget(self.but_node)
-        self.apply = QtWidgets.QPushButton(self.frame)
-        self.apply.setObjectName("apply")
-        self.horizontalLayout_9.addWidget(self.apply)
+        self.apply_btn = QtWidgets.QPushButton(self.frame)
+        self.apply_btn.setObjectName("apply_btn")
+        self.horizontalLayout_9.addWidget(self.apply_btn)
         self.horizontalLayout_7.addWidget(self.frame)
         self.verticalLayout_4.addWidget(self.applay)
         self.horizontalLayout.addWidget(self.show)
@@ -339,7 +339,7 @@ class Ui_MainWindow(object):
         self.generate_btn.setText(_translate("MainWindow", "Generate"))
         self.start_label.setText(_translate("MainWindow", "Start:"))
         self.but_label.setText(_translate("MainWindow", "But:"))
-        self.apply.setText(_translate("MainWindow", "Apply"))
+        self.apply_btn.setText(_translate("MainWindow", "Apply"))
 from interface.initfig import InitFig
 from interface.resultfig import ResultFig
 
