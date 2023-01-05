@@ -16,6 +16,11 @@ if __name__ == '__main__':
     ui.algorithm_name.setEnabled(False)
     ui.isTree = True
     interface_tools.show_graph_algos(False, ui)
+    ui.start_node.setValue(0)
+    ui.but_node.setValue(ui.nb_nodes.value() - 1)
+
+    # set default start node and end node
+    ui.nb_nodes.valueChanged.connect(lambda bol: interface_tools.change_default_start_end(bol, ui))
 
     # button handlers
     ui.graph_btn.clicked.connect(lambda bol: interface_tools.show_graph_algos(bol, ui))

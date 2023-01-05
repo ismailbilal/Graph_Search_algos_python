@@ -47,6 +47,7 @@ def draw_new_graph(boolean_variable, ui):
     nb_nodes = ui.nb_nodes.value()
     ui.matrix = generate_matrix(nb_nodes)
     graph = nx.from_numpy_matrix(ui.matrix)
+    ui.graph = graph
 
     ui.InitFig.canvas.axes.clear()
     ui.ResultFig.canvas.axes.clear()
@@ -112,13 +113,26 @@ def select_algo(boolean_variable, ui, algo_btn):
 
 def show_result(boolean_variable, ui):
     algo = ui.current_algorithm
-    tree_as_dict = nx.to_dict_of_lists(ui.tree)
     if ui.isTree:
+        tree_as_dict = nx.to_dict_of_lists(ui.tree)
         path = algorithms[algo]["algo_func"](tree_as_dict, ui.start_node.value())
-        edges = [(path[i], path[i+1]) for i in range(len(path)-1)]
+        edges = [(path[i], path[i + 1]) for i in range(len(path) - 1)]
         DG = nx.DiGraph()
         DG.add_edges_from(edges)
         ui.ResultFig.canvas.axes.clear()
         set_figures_style(ui)
         draw_network(DG, axis=ui.ResultFig.canvas.axes, path_edges=edges)
         ui.ResultFig.canvas.draw()
+    else:
+        path = algorithms[algo]["algo_func"](ui.graph, ui.start_node.value(), ui.but_node.value())
+        path_edges = [(path[i], path[i + 1]) for i in range(len(path) - 1)]
+        ui.ResultFig.canvas.axes.clear()
+        set_figures_style(ui)
+        draw_network(ui.graph, axis=ui.ResultFig.canvas.axes, path_edges=path_edges, start_node=ui.start_node.value(),
+                     goal_node=ui.but_node.value())
+        ui.ResultFig.canvas.draw()
+
+
+def change_default_start_end(boolean_variable, ui):
+    ui.start_node.setValue(0)
+    ui.but_node.setValue(ui.nb_nodes.value() - 1)

@@ -24,10 +24,10 @@ def draw_network(graph, start_node=None, goal_node=None, path_edges=[], axis="of
     # draw all nodes
     nx.draw_networkx_nodes(graph, pos, node_color="tab:blue", node_size=node_size, ax=axis)
     # draw starting node with the color green
-    if start_node:
+    if start_node is not None:
         nx.draw_networkx_nodes(graph, pos, nodelist=[start_node], node_color="tab:green", node_size=node_size, ax=axis)
     # draw goal_node with the color red
-    if goal_node:
+    if goal_node is not None:
         nx.draw_networkx_nodes(graph, pos, nodelist=[goal_node], node_color="tab:red", node_size=node_size, ax=axis)
     # draw all edges
     nx.draw_networkx_edges(graph, pos, width=1, ax=axis)
