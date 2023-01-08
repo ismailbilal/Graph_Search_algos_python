@@ -9,7 +9,7 @@ algorithms = {
     "largeur": {
         "algo_func": lambda tree, source: larguer_algo(tree, source)
     },
-    "profondeur": {
+    "rofondeur": {
         "algo_func": lambda tree, source: ParcoursProfondeur_Prefix(tree, source)
     },
     "prefixe": {
