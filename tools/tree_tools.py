@@ -35,10 +35,27 @@ def hierarchy_pos(G, root=None, width=1., vert_gap=0.2, vert_loc=0, xcenter=0.5)
 
 def generate_tree(nb_nodes):
     G = nx.random_tree(nb_nodes, seed=randint(1, 100))
-    # pos = hierarchy_pos(G, 1)
-    # nx.draw(G, pos=pos, with_labels=True)
-    return G
+    DG = to_directed(G)
+    return DG
 
 
-def draw_tree(tree, stare_node=None, goal_node=None, path=[], axis='off'):
-    pass
+def to_directed(tree, source=0):
+    def tuple_exist_in_list(lst, tup):
+        return any([sorted(tup) == sorted(ele) for ele in lst])
+
+    def getDiEdges(tree, node, edges=[]):
+        for neig in tree.neighbors(node):
+            if not tuple_exist_in_list(edges, (node, neig)):
+                edges.append((node, neig))
+                getDiEdges(tree, neig, edges)
+        return edges
+
+    if not tree:
+        return None
+    if not tree.edges():
+        return None
+    prev_edges = tree.edges()
+    DT = nx.DiGraph()
+    new_edges = getDiEdges(tree, source)
+    DT.add_edges_from(new_edges)
+    return DT
