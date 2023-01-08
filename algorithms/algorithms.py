@@ -3,6 +3,7 @@ from algorithms.tree_algorithms.largeur import larguer_algo
 from networkx import astar_path
 from algorithms.tree_algorithms.prefixe import prefixe
 from algorithms.tree_algorithms.infixe import inorder
+from algorithms.graph_alrogithms.kraskal import get_tree_by_kruksal
 
 
 algorithms = {
@@ -20,5 +21,8 @@ algorithms = {
     },
     "astar": {
         "algo_func": lambda graph, source, goal: astar_path(graph, source, goal)
+    },
+    "kraskal": {
+        "algo_func": lambda graph : get_tree_by_kruksal(graph)
     }
 }
