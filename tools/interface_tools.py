@@ -128,7 +128,7 @@ def show_result(boolean_variable, ui):
             posTree = hierarchy_pos(tree, 0)
             draw_network(tree, pos=posTree, axis=ui.ResultFig.canvas.axes)
         else:
-            path = algorithms[algo]["algo_func"](ui.graph, ui.start_node.value(), ui.but_node.value())
+            path = algorithms[algo]["algo_func"](ui.matrix, ui.start_node.value(), ui.but_node.value())
             path_edges = [(path[i], path[i + 1]) for i in range(len(path) - 1)]
             draw_network(ui.graph, axis=ui.ResultFig.canvas.axes, path_edges=path_edges,
                          start_node=ui.start_node.value(),
