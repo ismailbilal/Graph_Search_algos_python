@@ -4,6 +4,7 @@ from algorithms.tree_algorithms.prefixe import prefixe
 from algorithms.tree_algorithms.infixe import inorder
 from algorithms.graph_alrogithms.kraskal import get_tree_by_kruksal
 from algorithms.graph_alrogithms.astar import astar, heuristic
+from algorithms.tree_algorithms.postfix import postfix
 from networkx import from_numpy_matrix
 
 algorithms = {
@@ -18,6 +19,9 @@ algorithms = {
     },
     "infixe": {
         "algo_func": lambda tree, source: inorder(tree, source)
+    },
+    "postfixe": {
+        "algo_func": lambda tree, source: postfix(tree, source)
     },
     "astar": {
         "algo_func": lambda graph, source, goal: astar(graph, heuristic(from_numpy_matrix(graph), goal), source)
