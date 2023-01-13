@@ -95,6 +95,7 @@ def reset_algo_btns_style(ui):
     ui.floydwarchal.setStyleSheet(style)
     ui.fordfulkerson.setStyleSheet(style)
     ui.kraskal.setStyleSheet(style)
+    ui.dijkstra.setStyleSheet(style)
 
 
 def select_algo(boolean_variable, ui, algo_btn):
@@ -123,7 +124,7 @@ def show_result(boolean_variable, ui):
         DG.add_edges_from(edges)
         draw_network(DG, axis=ui.ResultFig.canvas.axes, path_edges=edges)
     else:
-        if algo in ('kraskal'):
+        if algo in 'kraskal':
             tree = algorithms[algo]["algo_func"](ui.matrix.tolist())
             posTree = hierarchy_pos(tree, 0)
             draw_network(tree, pos=posTree, axis=ui.ResultFig.canvas.axes)

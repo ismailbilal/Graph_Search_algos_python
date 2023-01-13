@@ -40,6 +40,7 @@ if __name__ == '__main__':
     ui.floydwarchal.clicked.connect(lambda bol: interface_tools.select_algo(bol, ui, ui.floydwarchal))
     ui.fordfulkerson.clicked.connect(lambda bol: interface_tools.select_algo(bol, ui, ui.fordfulkerson))
     ui.kraskal.clicked.connect(lambda bol: interface_tools.select_algo(bol, ui, ui.kraskal))
+    ui.dijkstra.clicked.connect(lambda bol: interface_tools.select_algo(bol, ui, ui.dijkstra))
 
     ui.apply_btn.clicked.connect(lambda bol: interface_tools.show_result(bol, ui))
 
