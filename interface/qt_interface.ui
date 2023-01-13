@@ -270,6 +270,13 @@ background-color: #fff;
                  </widget>
                 </item>
                 <item>
+                 <widget class="QPushButton" name="dijkstra">
+                  <property name="text">
+                   <string>Dijkstra</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
                  <widget class="QPushButton" name="astar">
                   <property name="minimumSize">
                    <size>
