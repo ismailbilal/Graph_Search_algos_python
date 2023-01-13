@@ -3,19 +3,19 @@ from random import choice, randint
 from numpy import matrix
 
 
-def generate_matrix(nb_nodes=10):
-    min_value = 1
-    max_value = 18
+def generate_matrix(nb_nodes=10, min_value=1, max_value=18):
     random_graph = matrix(
         [[choice([0, 0, 0, 1]) * randint(min_value, max_value) for j in range(nb_nodes)] for i in range(nb_nodes)])
     for i in range(nb_nodes):
         random_graph[i, i] = 0
+        for j in range(i):
+            random_graph[i, j] = random_graph[j, i]
     return random_graph
 
 
 def draw_network(graph, start_node=None, goal_node=None, path_edges=[], axis="off", pos=None):
-    node_size = 200 + 2000 / graph.number_of_nodes()**1.5 # 200
-    font_size = 7 + 16 / graph.number_of_nodes()   # 7
+    node_size = 200 + 2000 / graph.number_of_nodes() ** 1.5  # 200
+    font_size = 7 + 16 / graph.number_of_nodes()  # 7
     edge_labels = nx.get_edge_attributes(graph, "weight")
 
     # position of all nodes
