@@ -1,5 +1,5 @@
 import networkx as nx
-from tools.graph_tools import generate_matrix, draw_network
+from tools.graph_tools import generate_matrix, draw_network, to_unit_matrix
 from tools.tree_tools import generate_tree, hierarchy_pos
 from algorithms.algorithms import algorithms
 
@@ -15,6 +15,7 @@ def show_graph_algos(boolean_variable, ui):
         ui.nb_nodes.setValue(10)
         select_algo(False, ui, ui.bellmanford)
         ui.isTree = False
+        ui.isWeighted = True
 
 
 def show_arbre_algos(boolean_variable, ui):
@@ -43,9 +44,11 @@ def clear_figures(ui):
     ui.InitFig.canvas.draw()
 
 
-def draw_new_graph(boolean_variable, ui):
+def draw_new_graph(boolean_variable, ui, matrix=None):
     nb_nodes = ui.nb_nodes.value()
-    ui.matrix = generate_matrix(nb_nodes)
+    ui.matrix = matrix
+    if matrix is None:
+        ui.matrix = generate_matrix(nb_nodes, max_value=18 if ui.isWeighted else 1)
     graph = nx.from_numpy_matrix(ui.matrix)
     ui.graph = graph
 
@@ -53,10 +56,10 @@ def draw_new_graph(boolean_variable, ui):
     ui.ResultFig.canvas.axes.clear()
     set_figures_style(ui)
 
-    draw_network(graph, axis=ui.InitFig.canvas.axes)
+    draw_network(ui.graph, axis=ui.InitFig.canvas.axes, with_edge_labels=ui.isWeighted)
     ui.InitFig.canvas.draw()
 
-    draw_network(graph, axis=ui.ResultFig.canvas.axes)
+    draw_network(ui.graph, axis=ui.ResultFig.canvas.axes, with_edge_labels=ui.isWeighted)
     ui.ResultFig.canvas.draw()
 
 
@@ -99,6 +102,7 @@ def reset_algo_btns_style(ui):
 
 
 def select_algo(boolean_variable, ui, algo_btn):
+    ui.isWeighted = True
     ui.algorithm_name.setText(algo_btn.text())
     ui.algorithm_name.setStyleSheet("font-size:24px; color:rgb(18, 104, 255)")
     ui.algorithm_name.setEnabled(False)
@@ -110,6 +114,10 @@ def select_algo(boolean_variable, ui, algo_btn):
             font-weight: bold;
     }""")
     ui.current_algorithm = algo_btn.objectName()
+    if ui.current_algorithm in "bfs":
+        ui.isWeighted = False
+        non_weighted_matrix = to_unit_matrix(ui.matrix)
+        draw_new_graph(boolean_variable, ui, matrix=non_weighted_matrix)
 
 
 def show_result(boolean_variable, ui):
@@ -133,7 +141,8 @@ def show_result(boolean_variable, ui):
             path_edges = [(path[i], path[i + 1]) for i in range(len(path) - 1)]
             draw_network(ui.graph, axis=ui.ResultFig.canvas.axes, path_edges=path_edges,
                          start_node=ui.start_node.value(),
-                         goal_node=ui.but_node.value())
+                         goal_node=ui.but_node.value(),
+                         with_edge_labels=ui.isWeighted)
     ui.ResultFig.canvas.draw()
 
 
