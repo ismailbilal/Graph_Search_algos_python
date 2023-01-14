@@ -6,6 +6,7 @@ from algorithms.graph_alrogithms.kraskal import get_tree_by_kruksal
 from algorithms.graph_alrogithms.astar import astar, heuristic
 from algorithms.graph_alrogithms.dijkstra import dijkstra
 from algorithms.tree_algorithms.postfix import postfix
+from algorithms.graph_alrogithms.bfs import best_first_search
 from networkx import from_numpy_matrix
 
 algorithms = {
@@ -32,5 +33,8 @@ algorithms = {
     },
     "kraskal": {
         "algo_func": lambda graph: get_tree_by_kruksal(graph)
+    },
+    "bfs": {
+        "algo_func": lambda graph, source, target: best_first_search(graph, source, target)
     }
 }
