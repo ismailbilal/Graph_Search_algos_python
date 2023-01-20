@@ -1,3 +1,5 @@
+import networkx as nx
+
 from algorithms.tree_algorithms.profondeur import ParcoursProfondeur_Prefix
 from algorithms.tree_algorithms.largeur import larguer_algo
 from algorithms.tree_algorithms.prefixe import prefixe
@@ -9,7 +11,7 @@ from algorithms.tree_algorithms.postfix import postfix
 from algorithms.graph_alrogithms.bfs import best_first_search
 from algorithms.graph_alrogithms.bellmanford import bellman_ford
 from algorithms.graph_alrogithms.bellmanfordmoore import bellman_ford_moore
-from networkx import from_numpy_matrix
+from networkx import from_numpy_matrix, dijkstra_path
 
 algorithms = {
     "largeur": {
@@ -31,7 +33,7 @@ algorithms = {
         "algo_func": lambda graph, source, goal: astar(graph, heuristic(from_numpy_matrix(graph), goal), source)
     },
     "dijkstra": {
-        "algo_func": lambda graph, source, goal: dijkstra(graph, source, goal)
+        "algo_func": lambda graph, source, goal: dijkstra_path(nx.from_numpy_matrix(graph), source, goal)
     },
     "kraskal": {
         "algo_func": lambda graph: get_tree_by_kruksal(graph)

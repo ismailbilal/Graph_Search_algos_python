@@ -1,6 +1,4 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtGui import QColor
-from PyQt5.QtWidgets import *
+from PyQt5 import QtWidgets
 import sys
 from interface.window_interface import Ui_MainWindow
 from tools import interface_tools
