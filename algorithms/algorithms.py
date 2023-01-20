@@ -7,6 +7,7 @@ from algorithms.graph_alrogithms.astar import astar, heuristic
 from algorithms.graph_alrogithms.dijkstra import dijkstra
 from algorithms.tree_algorithms.postfix import postfix
 from algorithms.graph_alrogithms.bfs import best_first_search
+from algorithms.graph_alrogithms.bellmanford import bellman_ford
 from networkx import from_numpy_matrix
 
 algorithms = {
@@ -36,5 +37,8 @@ algorithms = {
     },
     "bfs": {
         "algo_func": lambda graph, source, target: best_first_search(graph, source, target)
+    },
+    "bellmanford": {
+        "algo_func": lambda graph, source, target: bellman_ford(graph, source, target)
     }
 }
