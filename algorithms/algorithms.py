@@ -8,6 +8,7 @@ from algorithms.graph_alrogithms.dijkstra import dijkstra
 from algorithms.tree_algorithms.postfix import postfix
 from algorithms.graph_alrogithms.bfs import best_first_search
 from algorithms.graph_alrogithms.bellmanford import bellman_ford
+from algorithms.graph_alrogithms.bellmanfordmoore import bellman_ford_moore
 from networkx import from_numpy_matrix
 
 algorithms = {
@@ -40,5 +41,8 @@ algorithms = {
     },
     "bellmanford": {
         "algo_func": lambda graph, source, target: bellman_ford(graph, source, target)
+    },
+    "belmanfordmoore": {
+        "algo_func": lambda graph, source, target: bellman_ford_moore(graph, source, target)
     }
 }
